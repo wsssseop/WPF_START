@@ -1,6 +1,9 @@
-﻿using System.Configuration;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
 using System.Data;
 using System.Windows;
+using WpfApp1.ViewModels;
+using WpfApp1.Views;
 
 namespace WpfApp1
 {
@@ -9,6 +12,35 @@ namespace WpfApp1
     /// </summary>
     public partial class App : Application
     {
+        public IServiceProvider Services { get; private set; }
+
+
+        void Config(IServiceCollection services)
+        {
+            services.AddSingleton<MainWindow>();
+            services.AddSingleton<MainWindowViewModel>();
+
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            
+            var serviceCollection = new ServiceCollection();
+            Config(serviceCollection);
+            Services = serviceCollection.BuildServiceProvider();
+
+            var mainWindow = Services.GetRequiredService<MainWindow>();
+
+            //mainWindow.DataContext = Services.GetRequiredService<MainWindowViewModel>();
+
+            mainWindow.Show();
+
+
+
+
+
+        }
     }
 
 }

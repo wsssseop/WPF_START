@@ -6,6 +6,24 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Icon\icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Icon\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Stores\" />
+    <Folder Include="ViewModels\ContentViewModel\" />
+    <Folder Include="ViewModels\PopupViewModel\" />
+    <Folder Include="Views\ContentView\" />
+    <Folder Include="Views\PopupView\" />
+  </ItemGroup>
 
 </Project>
