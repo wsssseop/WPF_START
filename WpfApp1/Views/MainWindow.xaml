@@ -12,7 +12,6 @@
     <Grid>
         <StackPanel>
             <Button Content="hehe" Command="{Binding heCommand}"/>
-            <TextBlock Text="{Binding MyList}"/>
         </StackPanel>
     </Grid>
 </Window>
