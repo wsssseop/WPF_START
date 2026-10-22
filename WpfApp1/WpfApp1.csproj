@@ -10,12 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Png\logo-small.png" />
+    <None Remove="Images\Png\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Images\Icon\icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.161" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +30,15 @@
     <Folder Include="ViewModels\PopupViewModel\" />
     <Folder Include="Views\ContentView\" />
     <Folder Include="Views\PopupView\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Png\logo-small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Png\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
