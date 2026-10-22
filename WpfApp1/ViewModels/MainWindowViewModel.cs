@@ -13,30 +13,43 @@ namespace WpfApp1.ViewModels
     {
 
         [ObservableProperty]
-        private string _myList;
+        private int _titleHeight = 42;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(OuterMarginSize))]
+        [NotifyPropertyChangedFor(nameof(OuterMarginThickness))]
+        private WindowState _windowState;
+
+        [ObservableProperty]
+        private double _windowMinimumWidth = 400;
+        [ObservableProperty]
+        private double _windowMinimumHeight = 400;
 
 
-        [ObservableProperty]
-        private string _test;
-        [ObservableProperty]
-        private string _testb;
-        [ObservableProperty]
-        private string _testc;
-        [ObservableProperty]
-        private string _testdd;
+        public double OuterMarginSize => WindowState == WindowState.Maximized ? 0 : 10;
 
+        public Thickness OuterMarginThickness => new Thickness(OuterMarginSize);
 
         public MainWindowViewModel()
         {
-            MyList = "hello!!";
-
         }
 
 
         [RelayCommand]
-        private void he()
+        private void Menu()
         {
-            MessageBox.Show("hello");
+            //var t= new Point(100, 100);
+            //SystemCommands.ShowSystemMenu( , t);
+        }
+
+        [RelayCommand]
+        private void Minimize() => WindowState = WindowState.Minimized;
+ 
+        [RelayCommand]
+        private void Maximize() => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+
+        [RelayCommand]
+        private void Close()
+        {
         }
 
     }
