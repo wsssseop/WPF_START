@@ -15,9 +15,21 @@ namespace WpfApp1.ViewModels
         [ObservableProperty]
         private string _myList;
 
+
+        [ObservableProperty]
+        private string _test;
+        [ObservableProperty]
+        private string _testb;
+        [ObservableProperty]
+        private string _testc;
+        [ObservableProperty]
+        private string _testdd;
+
+
         public MainWindowViewModel()
         {
             MyList = "hello!!";
+
         }
 
 
