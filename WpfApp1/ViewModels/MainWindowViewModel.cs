@@ -1,11 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfApp1.ViewModels.ContentViewModel;
+using WpfApp1.Views.ContentView;
 
 namespace WpfApp1.ViewModels
 {
@@ -24,13 +27,16 @@ namespace WpfApp1.ViewModels
         [ObservableProperty]
         private double _windowMinimumHeight = 400;
 
+        public INavigationService Navigate { get; }
 
         public double OuterMarginSize => WindowState == WindowState.Maximized ? 0 : 10;
 
         public Thickness OuterMarginThickness => new Thickness(OuterMarginSize);
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(INavigationService navigationService)
         {
+            Navigate = navigationService;
+            Navigate.NavigateTo<LoginViewModel>();
         }
 
 

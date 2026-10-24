@@ -41,7 +41,6 @@
                                     </Grid.OpacityMask>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="42"/>
-                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Column="0" Panel.ZIndex="1">
@@ -59,11 +58,15 @@
                                         </Button>
 
 
-                                        <Viewbox Grid.Column="1" Margin="0">
-                                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
+                                        <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
                                                        Style="{StaticResource HeaderText}"
                                                        FontSize="20"
-                                                       />
+                                                       >
+                                                    <Run Text="Waa" Foreground="{StaticResource ForegroundMainBrush}"/>
+                                                </TextBlock>
+                                            </StackPanel>
                                         </Viewbox>
                                         <StackPanel Grid.Column="2" Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True">
                                             <Button Content="_" 
@@ -87,24 +90,8 @@
                                         </StackPanel>
                                     </Grid>
 
-                                    <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
-                                        <Border.BorderBrush>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1, 0">
-                                                <GradientStop Color="{StaticResource ForegroundLight}" Offset="0.0"/>
-                                                <GradientStop Color="{StaticResource ForegroundMain}" Offset="0.5"/>
-                                                <GradientStop Color="{StaticResource ForegroundLight}" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Border.BorderBrush>
-
-                                        <Border.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Color="{StaticResource BackgroundVeryLight}" Offset="0.0"/>
-                                                <GradientStop Color="{StaticResource ForegroundLight}" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        
-                                    </Border>
-                                    <Border Grid.Row="2" Padding="5">
+     
+                                    <Border Grid.Row="1">
                                         <ContentPresenter Content="{TemplateBinding Content}"/>
                                     </Border>
                                     
@@ -124,32 +111,13 @@
                       CornerRadius="0"
                       />
     </WindowChrome.WindowChrome>
-    <Grid Background="Red">
-        <Button Content="test"/>
+
+    <Grid Background="{StaticResource ForegroundLightBrush}">
+        <ContentControl x:Name="MainContent" Content="{Binding Navigate.CurrentView}"/>
+
     </Grid>
 
-        <!--<Border >
-        <Grid>
-            <Border CornerRadius="20"
-                    Background="{StaticResource ForegroundLightBrush}">
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.5"/>
-                </Border.Effect>
 
-            </Border> 
-            
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="42"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid Background="Red" Grid.Column="0" Panel.ZIndex="1">
-                    
-                </Grid>
-            </Grid>
-        </Grid>
-    </Border>-->
 
     
    

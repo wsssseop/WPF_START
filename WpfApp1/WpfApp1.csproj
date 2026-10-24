@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Png\emoji-background.png" />
     <None Remove="Images\Png\logo-small.png" />
     <None Remove="Images\Png\logo.png" />
   </ItemGroup>
@@ -26,13 +27,18 @@
 
   <ItemGroup>
     <Folder Include="Stores\" />
-    <Folder Include="ViewModels\ContentViewModel\" />
     <Folder Include="ViewModels\PopupViewModel\" />
-    <Folder Include="Views\ContentView\" />
     <Folder Include="Views\PopupView\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Png\emoji-background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Png\logo-small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
