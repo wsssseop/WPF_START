@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Views.ContentView"
+             xmlns:helper="clr-namespace:WpfApp1.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="700">
 
@@ -38,8 +39,8 @@
                                        />
 
 
-                            <TextBox Tag="Email"/>
-                            <TextBox Tag="Password" Margin="0 0 0 30"/>
+                            <TextBox  Tag="Email"/>
+                            <PasswordBox Tag="Password" Margin="0 0 0 30"/>
                             <Button Content="Next" HorizontalAlignment="Center"/>
 
                         </StackPanel>
@@ -47,6 +48,12 @@
                     </Border>
 
                     <Button Style="{StaticResource TextButton}"  Content="I already have an account" HorizontalAlignment="Center"/>
+
+                    <ComboBox IsEditable="True"  Margin="5 0"
+                              x:Name="cmb"
+                              helper:ComboBoxBackgroundHelper.Background="Yellow"
+                              />
+                     
 
                 </StackPanel>
                 

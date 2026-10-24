@@ -9,7 +9,8 @@ namespace WpfApp1.ViewModels.ContentViewModel
 {
     public partial class LoginViewModel : ObservableObject
     {
-
+        [ObservableProperty]
+        private string _textTest = "aa";
         public LoginViewModel()
         {
             
