@@ -37,6 +37,7 @@ namespace WpfApp1.Helpers
             if(cb.IsLoaded)
                 Apply(cb);
 
+            
         }
 
 

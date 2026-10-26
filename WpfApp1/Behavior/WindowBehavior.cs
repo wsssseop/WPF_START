@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace WpfApp1.Behavior
 {
-    public class WindowBehavior : Behavior<Window>
+    public partial class WindowBehavior : Behavior<Window>
     {
         protected override void OnAttached()
         {

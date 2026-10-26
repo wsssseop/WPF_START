@@ -25,6 +25,9 @@ namespace WpfApp1
 
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<LoginViewModel>();
+            services.AddSingleton<ChatViewModel>();
+
+            
 
             services.AddSingleton<INavigationService, NavigationService>();
 

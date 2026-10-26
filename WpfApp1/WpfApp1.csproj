@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Font Awesome 7 Free-Solid-900.otf" />
     <None Remove="Images\Png\emoji-background.png" />
     <None Remove="Images\Png\logo-small.png" />
     <None Remove="Images\Png\logo.png" />
@@ -36,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Font Awesome 7 Free-Solid-900.otf" />
     <Resource Include="Images\Png\emoji-background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
