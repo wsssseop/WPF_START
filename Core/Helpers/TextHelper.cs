@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace WpfApp1.Helpers
+namespace Core.Helpers
 {
     public class TextHelper
     {

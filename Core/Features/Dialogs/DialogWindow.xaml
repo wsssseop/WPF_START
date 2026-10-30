@@ -1,0 +1,31 @@
+﻿<Window x:Class="Core.Dialogs.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Core.Dialogs"
+        xmlns:msgbox="clr-namespace:Core.Dialogs.MessageBoxDialog"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:b="clr-namespace:Core.Behavior"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="{Binding Title}"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        Height="450"
+        MinWidth="320"
+        ShowInTaskbar="False"
+        >
+
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type msgbox:MessageBoxDialogViewModel}">
+            <msgbox:MessageBoxDialogView/>
+        </DataTemplate>
+    </Window.Resources>
+    <i:Interaction.Behaviors>
+        <b:WindowBehavior/>
+    </i:Interaction.Behaviors>
+
+    <ContentControl Content="{Binding}" Margin="16" />
+</Window>

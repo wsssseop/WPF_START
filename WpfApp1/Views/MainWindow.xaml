@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.Views"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:b="clr-namespace:WpfApp1.Behavior"
+        xmlns:b="clr-namespace:Core.Behavior;assembly=Core"
+        xmlns:v="clr-namespace:WpfApp1.Views.ContentView"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -13,7 +14,6 @@
         WindowStartupLocation="CenterScreen"
         MinHeight="{Binding WindowMinimumHeight}"
         MinWidth="{Binding WindowMinimumWidth}"
-        
         Title="Welcome" Height="600" Width="900">
 
     <i:Interaction.Behaviors>
@@ -24,7 +24,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
-                        <Border Padding="{Binding OuterMarginThickness}">
+                        <Border Padding="{Binding OuterMarginThickness}" >
                             <Grid>
                                 <Border CornerRadius="10"
                                         Background="{StaticResource ForegroundLightBrush}"
@@ -32,10 +32,11 @@
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="5" Opacity="0.3"/>
                                     </Border.Effect>
-                                    
+
                                 </Border>
                                 <Border x:Name="ContainerMask" CornerRadius="10" Background="White"/>
                                 <Grid Background="Transparent">
+
                                     <Grid.OpacityMask>
                                         <VisualBrush Visual="{Binding ElementName=ContainerMask}"/>
                                     </Grid.OpacityMask>
@@ -49,7 +50,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        
+
                                         <Button Style="{StaticResource SystemIconButton}" >
                                             <Image Source="/Images/Png/logo-small.png"/>
                                             <i:Interaction.Behaviors>
@@ -72,7 +73,7 @@
                                             <Button Content="_" 
                                                     Style="{StaticResource WindowControlButton}"
                                                     Command="{Binding MinimizeCommand}">
-   
+
                                             </Button>
                                             <Button Content="[ ]" 
                                                     Style="{StaticResource WindowControlButton}"
@@ -90,11 +91,12 @@
                                         </StackPanel>
                                     </Grid>
 
-     
-                                    <Border Grid.Row="1">
+
+                                    <Border Grid.Row="1" Background="CadetBlue">
+
                                         <ContentPresenter Content="{TemplateBinding Content}"/>
                                     </Border>
-                                    
+
                                 </Grid>
                             </Grid>
                         </Border>
@@ -103,7 +105,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="20"
                       CaptionHeight="{Binding TitleHeight}"
@@ -112,16 +114,18 @@
                       />
     </WindowChrome.WindowChrome>
 
-    <Grid Background="{StaticResource ForegroundLightBrush}">
-        <ContentControl x:Name="MainContent" Content="{Binding Navigate.CurrentView}"/>
+    <Grid >
+        <Grid.Background>
+            <ImageBrush TileMode="Tile"
+                            ImageSource="/Images/Png/emoji-background.png"
+                            ViewportUnits="Absolute"
+                            Viewport="0 0 500 500"
+                />
+        </Grid.Background>
 
+        <ContentControl x:Name="MainContent" Content="{Binding Navigate.CurrentView}"/>
+        <!--<v:LoginView/>-->
     </Grid>
 
 
-
-    
-   
-    
-    
-    
 </Window>

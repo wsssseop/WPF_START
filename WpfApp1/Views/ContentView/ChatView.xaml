@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="WpfApp1.Views.ContentView.ChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Views.ContentView"
+             xmlns:sub="clr-namespace:WpfApp1.Views.ContentView.Features"
+             xmlns:simul="clr-namespace:WpfApp1.Simulator"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid d:DataContext="{x:Static simul:ChatListViewDesignModel.Instance}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Background="{StaticResource ForegroundLightBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Top Menu -->
+                <Grid Height="50" Background="CadetBlue">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource IconButton}" Command="{Binding ChatCommand}" Content="{StaticResource FontAwesomeChatIcon}"/>
+                        <Button Style="{StaticResource IconButton}" Command="{Binding DeleteCommand}" Content="{StaticResource FontAwesomeUserIcon}"/>
+                        <Button Style="{StaticResource IconButton}" Command="{Binding PictureCommand}" Content="{StaticResource FontAwesomePictureIcon}"/>
+
+                        <!--<Ellipse Width="16" Height="16" Stroke="DimGray" StrokeThickness="1" Margin="10">
+             <Ellipse.Style>
+                 <Style TargetType="Ellipse">
+                     <Setter Property="Fill" Value="LightGray"/>
+                     <Style.Triggers>
+                         <Trigger Property="IsMouseOver" Value="True">
+                             <Setter Property="Fill" Value="Red" />
+                         </Trigger>
+                         -->
+                        <!--<DataTrigger Binding="{Binding IsOn}" Value="True">
+                             <Setter Property="Fill" Value="LimeGreen"/>
+                         </DataTrigger>-->
+                        <!--
+                     </Style.Triggers>
+                 </Style>
+             </Ellipse.Style>
+         </Ellipse>-->
+                        <Viewbox>
+                            <TextBlock FontFamily="{StaticResource FontAwesomeSolid}" Text="&#xf0eb;" Margin="8">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
+                                        <Style.Triggers>
+                                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="Yellow" />
+                                            </Trigger>-->
+                                            <DataTrigger Binding="{Binding OnBulb}" Value="True">
+                                                <Setter Property="Foreground" Value="Yellow" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Viewbox>
+
+
+                    </StackPanel>
+
+                    <Button Grid.Column="2" Foreground="{StaticResource WordDarkBlueBrush}" Style="{StaticResource IconButton}"
+       Content="{StaticResource FontAwesomeCogIcon}"/>
+
+
+                </Grid>
+
+                <!--<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding ChatList}"
+                                  >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <sub:ChatListView Height="60"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>-->
+
+                <ListBox Grid.Row="1"
+                         ItemsSource="{Binding ChatList}"
+                         SelectedItem="{Binding SelectedChat}"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <sub:ChatListView Height="60"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border x:Name="border" Background="Transparent">
+                                            <ContentPresenter/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border"  Property="Background" Value="{StaticResource BackgroundLightBrush}" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="border"  Property="Background" Value="{StaticResource BackgroundLightBrush}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    
+                </ListBox>
+                
+                
+                
+            </Grid>
+        </Border>
+
+        <ContentControl Grid.Column="1" Content="{Binding ChatRoom}"/>
+        
+    </Grid>
+</UserControl>
+    

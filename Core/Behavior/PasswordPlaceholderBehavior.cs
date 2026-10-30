@@ -1,9 +1,9 @@
+using Core.Helpers;
 using Microsoft.Xaml.Behaviors;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Helpers;
 
-namespace WpfApp1.Behavior
+namespace Core.Behavior
 {
     public class PasswordPlaceholderBehavior : Behavior<PasswordBox>
     {

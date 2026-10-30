@@ -1,0 +1,17 @@
+{
+  "ChatID": "aa",
+  "MineMessage": [
+    {
+      "createTime": "",
+      "Message": "hello"
+    }
+  ],
+  "YoursMessage": [
+    {
+      "createTime": "",
+      "Message": "hello"
+    }
+  ]
+
+
+}

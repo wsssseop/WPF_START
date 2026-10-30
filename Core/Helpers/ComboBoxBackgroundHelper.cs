@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace WpfApp1.Helpers
+namespace Core.Helpers
 {
     public static class ComboBoxBackgroundHelper
     {
@@ -37,6 +37,7 @@ namespace WpfApp1.Helpers
             if(cb.IsLoaded)
                 Apply(cb);
 
+            
         }
 
 

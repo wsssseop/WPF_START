@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WpfApp1.Helpers
+namespace Core.Helpers
 {
     public static class PasswordBoxHelper
     {
