@@ -1,0 +1,154 @@
+﻿<UserControl x:Class="WpfApp1.Views.ContentView.Features.ChatRoomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Views.ContentView.Features"
+             xmlns:simul="clr-namespace:WpfApp1.Simulator"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid d:DataContext="{x:Static simul:ChatListViewDesignModel.Instance}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Messages}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <!--profile pic-->
+                            <Border VerticalAlignment="Top"
+                                    Visibility="{Binding IsMine, Converter={StaticResource BoolToVis}}"
+                                    HorizontalAlignment="Left"
+                                    CornerRadius="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                                    Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                                    Width="35"
+                                    Background="Green"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource ForegroundLightBrush}">
+                                <TextBlock Text="{Binding Sender}" VerticalAlignment="Center"
+                                           Foreground="{StaticResource ForegroundLightBrush}"
+                                           HorizontalAlignment="Center"/>
+                            </Border>
+                            <!--chat message container-->
+
+                            <Grid Margin="25 10 20 5" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <!--speech text-->
+                                <Border CornerRadius="10" 
+                                        Padding="5" 
+                                        Background="{StaticResource ForegroundLightBrush}"
+                                        >
+                                    <TextBlock VerticalAlignment="Center" TextWrapping="Wrap"
+                                   Foreground="{StaticResource WordDarkBlueBrush}"
+                                   Text="{Binding Message}"/>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="HorizontalAlignment" Value="Left" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsMine}" Value="False">
+                                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
+                                <TextBlock Grid.Row="1" Text="{Binding CreateAt, StringFormat={}{0:tt hh:mm}}" Foreground="{StaticResource ForegroundLightBrush}"
+                                           HorizontalAlignment="Right"
+                                           />
+                            </Grid>
+                        </Grid>
+                        <!--<StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Message}"/>
+                    </StackPanel>-->
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Grid Grid.RowSpan="1" Background="#80FFFFFF"
+              Visibility="{Binding IsLoading, Converter={StaticResource BoolToVis}}"
+              >
+            <TextBlock Style="{StaticResource SpinnerText}" FontSize="30"
+                       Foreground="{StaticResource WordBlueBrush}"/>
+            
+
+        </Grid>
+        <!--Meesage Send Box-->
+        <Grid Grid.Row="2" Background="{StaticResource ForegroundLightBrush}"
+              MaxHeight="150"
+              MinHeight="40">
+            <Grid.ColumnDefinitions>
+                <!-- Attached Button-->
+                <ColumnDefinition Width="Auto"/>
+                <!-- Text Entry Box-->
+                <ColumnDefinition Width="*"/>
+                <!-- Additional Buttons-->
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource IconButton}"
+                    Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                    Background="Transparent"
+                    Content="{StaticResource FontAwesomePaperClipIcon}"
+                    Foreground="Gray"/>
+            
+            
+            <TextBox Grid.Column="1" Tag="Write a message...."
+                     Text="{Binding TextboxMessage, UpdateSourceTrigger=LostFocus}"
+                     FontSize="20"
+                     TextWrapping="Wrap"
+                     BorderThickness="0"
+                     VerticalAlignment="Center"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"
+                     VerticalScrollBarVisibility="Auto"
+                     />
+
+
+
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0 0 8 0">
+                <Button  Style="{StaticResource IconButton}"
+                    Background="Transparent"
+                        Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                    Content="{StaticResource FontAwesomeEmojiIcon}"
+                    Foreground="Orange"/>
+                
+                <Button Content="Send" Padding="5"
+                        Command="{Binding SendMessageCommand}"
+                        FontSize="20"
+                        Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                        Margin="5"
+                        Background="LimeGreen"
+                        Foreground="{StaticResource BackgroundLightBrush}"/>
+
+            </StackPanel>
+
+        </Grid>
+        <!--<TextBlock Text="{Binding ErrorMessage}"
+                   Foreground="Red"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   >
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ErrorMessage}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+            
+        </TextBlock>-->
+
+
+    </Grid>
+</UserControl>

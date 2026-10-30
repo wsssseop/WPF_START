@@ -6,7 +6,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp1.Helpers
+namespace Core.Helpers
 {
     public static class SecureStringHelpers
     {

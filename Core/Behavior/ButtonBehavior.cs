@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace WpfApp1.Behavior
+namespace Core.Behavior
 {
     public class ButtonBehavior : Behavior<Button>
     {

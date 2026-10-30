@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.Views"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:b="clr-namespace:WpfApp1.Behavior"
+        xmlns:b="clr-namespace:Core.Behavior;assembly=Core"
         xmlns:v="clr-namespace:WpfApp1.Views.ContentView"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -14,7 +14,6 @@
         WindowStartupLocation="CenterScreen"
         MinHeight="{Binding WindowMinimumHeight}"
         MinWidth="{Binding WindowMinimumWidth}"
-        
         Title="Welcome" Height="600" Width="900">
 
     <i:Interaction.Behaviors>
@@ -33,7 +32,7 @@
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="5" Opacity="0.3"/>
                                     </Border.Effect>
-                                    
+
                                 </Border>
                                 <Border x:Name="ContainerMask" CornerRadius="10" Background="White"/>
                                 <Grid Background="Transparent">
@@ -51,7 +50,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        
+
                                         <Button Style="{StaticResource SystemIconButton}" >
                                             <Image Source="/Images/Png/logo-small.png"/>
                                             <i:Interaction.Behaviors>
@@ -74,7 +73,7 @@
                                             <Button Content="_" 
                                                     Style="{StaticResource WindowControlButton}"
                                                     Command="{Binding MinimizeCommand}">
-   
+
                                             </Button>
                                             <Button Content="[ ]" 
                                                     Style="{StaticResource WindowControlButton}"
@@ -92,12 +91,12 @@
                                         </StackPanel>
                                     </Grid>
 
-     
+
                                     <Border Grid.Row="1" Background="CadetBlue">
-                                        
+
                                         <ContentPresenter Content="{TemplateBinding Content}"/>
                                     </Border>
-                                    
+
                                 </Grid>
                             </Grid>
                         </Border>
@@ -106,7 +105,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="20"
                       CaptionHeight="{Binding TitleHeight}"

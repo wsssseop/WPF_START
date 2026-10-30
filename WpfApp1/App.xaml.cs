@@ -1,10 +1,13 @@
-﻿using Core.Services;
+﻿using Core.Dialogs;
+using Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using WpfApp1.Stores;
 using WpfApp1.ViewModels;
 using WpfApp1.ViewModels.ContentViewModel;
+using WpfApp1.ViewModels.ContentViewModel.Features;
 using WpfApp1.Views;
 
 namespace WpfApp1
@@ -21,15 +24,22 @@ namespace WpfApp1
         {
             services.AddSingleton<MainWindow>();
 
+            //store
+            services.AddSingleton<ChatListStore>();
 
-
+            //viewmodel
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<LoginViewModel>();
             services.AddSingleton<ChatViewModel>();
+            services.AddTransient<ChatRoomViewModel>();
 
-            
+
+
+            services.AddSingleton<IDialogService, DialogService>();
 
             services.AddSingleton<INavigationService, NavigationService>();
+
+            services.AddSingleton<ChatMessageService>();
 
         }
 

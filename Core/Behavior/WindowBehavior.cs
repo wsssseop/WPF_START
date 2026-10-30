@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace WpfApp1.Behavior
+namespace Core.Behavior
 {
     public partial class WindowBehavior : Behavior<Window>
     {
@@ -16,24 +16,22 @@ namespace WpfApp1.Behavior
         {
             base.OnAttached();
 
-            AssociatedObject.Closing += AssociatedObjectClosing;
-            AssociatedObject.Closed += AssociatedObjectClosed;
+            AssociatedObject.MouseLeftButtonDown += AssociatedObjectMouseLeftButtonDown;
         }
 
-        private void AssociatedObjectClosing(object? sender, CancelEventArgs e)
+        private void AssociatedObjectMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                AssociatedObject.DragMove();
+            }
 
         }
 
-        private void AssociatedObjectClosed(object? sender, EventArgs e)
-        {
-
-        }
 
         protected override void OnDetaching()
         {
-            AssociatedObject.Closing -= AssociatedObjectClosing;
-            AssociatedObject.Closed -= AssociatedObjectClosed;
+            AssociatedObject.MouseLeftButtonDown -= AssociatedObjectMouseLeftButtonDown;
             base.OnDetaching();
         }
     }

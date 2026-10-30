@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helper="clr-namespace:WpfApp1.Helpers"
+                    xmlns:helper="clr-namespace:Core.Helpers;assembly=Core"
                     >
     
 
@@ -132,7 +132,7 @@
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ColorAnimation To="DarkOrange" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                    <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
                                 </Storyboard>
                             </BeginStoryboard>
 
@@ -241,13 +241,12 @@
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ColorAnimation To="{StaticResource WordBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
+                                    <!--<ColorAnimation To="{StaticResource WordBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>-->
+                                    <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" FillBehavior="Stop"/>
                                 </Storyboard>
                             </BeginStoryboard>
 
                         </EventTrigger>
-
-
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="DarkGray"/>
                         </Trigger>
@@ -255,7 +254,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
 
     </Style>
     

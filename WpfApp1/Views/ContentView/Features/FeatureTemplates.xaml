@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:subvm="clr-namespace:WpfApp1.ViewModels.ContentViewModel.Features"
+                    xmlns:subv="clr-namespace:WpfApp1.Views.ContentView.Features"
+                    >
+    
+    <DataTemplate DataType="{x:Type subvm:ChatRoomViewModel}">
+        <subv:ChatRoomView/>
+    </DataTemplate>
+
+</ResourceDictionary>

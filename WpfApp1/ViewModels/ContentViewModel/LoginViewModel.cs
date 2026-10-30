@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Core.Helpers;
 using Core.Services;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using WpfApp1.Helpers;
 
 namespace WpfApp1.ViewModels.ContentViewModel
 {
@@ -21,11 +21,12 @@ namespace WpfApp1.ViewModels.ContentViewModel
     {
         private INavigationService _navigationService;
         [ObservableProperty]
-        private string _email;
+        private string _email = string.Empty;
 
         public LoginViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+
         }
 
         [RelayCommand]

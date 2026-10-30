@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Stores\" />
     <Folder Include="ViewModels\PopupViewModel\" />
     <Folder Include="Views\PopupView\" />
   </ItemGroup>

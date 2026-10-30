@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Base;
-using WpfApp1.Helpers;
 using WpfApp1.ViewModels.ContentViewModel;
 
 namespace WpfApp1.Views.ContentView

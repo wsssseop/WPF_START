@@ -5,13 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp1.Helpers
+namespace Core.Helpers
 {
     public class IsBusyHelper
     {
-
-
-
 
 
         public static bool GetValue(DependencyObject obj)
@@ -27,10 +24,6 @@ namespace WpfApp1.Helpers
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.RegisterAttached("Value", typeof(bool), typeof(IsBusyHelper), new PropertyMetadata(false));
-
-
-
-
 
 
     }
