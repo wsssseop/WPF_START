@@ -1,9 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Core.Dialogs;
+using Core.Logging;
+using Core.Logging.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +21,8 @@ namespace WpfApp1.ViewModels.ContentViewModel
         private readonly IDialogService _dialog;
         [ObservableProperty]
         private ObservableCollection<ChatListModel> _chatList;
+
+        private static readonly Logger _testLog = LogService.GetLogger("Chat", Process.GetCurrentProcess().ProcessName);
 
         [ObservableProperty]
         private ChatListModel? _selectedChat;
@@ -52,10 +57,25 @@ namespace WpfApp1.ViewModels.ContentViewModel
          */
 
         [RelayCommand]
+        private void Option()
+        {
+            _testLog.Seq($"option Btn 실행");
+
+        }
+        [RelayCommand]
         private async Task DeleteAsync()
         {
             if (!await _dialog.ConfirmAsync("안녕하세요?"))
+            {
+
+                Debug.WriteLine("false");
                 return;
+
+            }
+            else
+            {
+                Debug.WriteLine("true");
+            }
 
 
         }

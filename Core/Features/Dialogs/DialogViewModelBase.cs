@@ -32,6 +32,8 @@ namespace Core.Dialogs
 
     public static class DialogServiceExtensions
     {
+        public static Task AlertAsync(this IDialogService dialog, string message, string title = "알림")
+                    => dialog.ShowDialogAsync(new MessageBoxDialogViewModel { Title = title, Message = message });
         public static async Task<bool> ConfirmAsync(this IDialogService dialog, string message, string title = "확인")
         {
             var vm = new MessageBoxDialogViewModel { Title = title, Message = message, CancelText = "취소" };

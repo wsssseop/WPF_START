@@ -11,9 +11,6 @@ namespace Core.Services
     public class DialogService : IDialogService
     {
         private readonly Dictionary<Type, DialogWindow> _openWindows = new();
-
-
-
         private static DialogWindow CreateWindow(DialogViewModelBase viewModel)
         {
             var owner = Application.Current.Windows.OfType<Window>().FirstOrDefault(w=>w.IsActive) ?? Application.Current.MainWindow;

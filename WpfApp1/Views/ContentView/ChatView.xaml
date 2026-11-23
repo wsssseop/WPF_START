@@ -30,7 +30,10 @@
                     <StackPanel Orientation="Horizontal">
                         <Button Style="{StaticResource IconButton}" Command="{Binding ChatCommand}" Content="{StaticResource FontAwesomeChatIcon}"/>
                         <Button Style="{StaticResource IconButton}" Command="{Binding DeleteCommand}" Content="{StaticResource FontAwesomeUserIcon}"/>
-                        <Button Style="{StaticResource IconButton}" Command="{Binding PictureCommand}" Content="{StaticResource FontAwesomePictureIcon}"/>
+                        <Button Style="{StaticResource IconButton}" 
+                                Command="{Binding PictureCommand}" 
+                                Content="{StaticResource FontAwesomePictureIcon}"
+                                AutomationProperties.Name="사진"/>
 
                         <!--<Ellipse Width="16" Height="16" Stroke="DimGray" StrokeThickness="1" Margin="10">
              <Ellipse.Style>
@@ -70,8 +73,10 @@
 
                     </StackPanel>
 
-                    <Button Grid.Column="2" Foreground="{StaticResource WordDarkBlueBrush}" Style="{StaticResource IconButton}"
-       Content="{StaticResource FontAwesomeCogIcon}"/>
+                    <Button Grid.Column="2" Foreground="{StaticResource WordDarkBlueBrush}"
+                            Style="{StaticResource IconButton}"
+                            Content="{StaticResource FontAwesomeCogIcon}"
+                            Command="{Binding OptionCommand}"/>
 
 
                 </Grid>

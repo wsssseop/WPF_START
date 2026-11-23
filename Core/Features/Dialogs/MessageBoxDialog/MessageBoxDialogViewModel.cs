@@ -19,7 +19,7 @@ namespace Core.Dialogs.MessageBoxDialog
 
         private string? _cancelText;
         [RelayCommand]
-        private void OK() => Close(true);
+        private void Ok() => Close(true);
         [RelayCommand]
 
         private void Cancel() => Close(false);
